@@ -292,8 +292,8 @@ void LoadOpencvBbxData(string filepath,
                 boundingbox.centroid_x = boundingbox.start_x + boundingbox.width/2.0;
                 boundingbox.centroid_y = boundingbox.start_y + boundingbox.height/2.0;
                 
-                
-                adjustImage(image,ground_truth_shape,boundingbox);
+                //Bug Shield By Culiner 2015.11.15
+                //adjustImage(image,ground_truth_shape,boundingbox);
                 images.push_back(image);
                 ground_truth_shapes.push_back(ground_truth_shape);
                 bounding_boxs.push_back(boundingbox);
