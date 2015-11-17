@@ -28,6 +28,7 @@
     <ClCompile Include="liblinear\dscal.c" />
     <ClCompile Include="liblinear\linear.cpp" />
     <ClCompile Include="liblinear\tron.cpp" />
+    <ClCompile Include="Observe.cpp" />
     <ClCompile Include="RandomForest.cpp" />
     <ClCompile Include="TestModel.cpp" />
     <ClCompile Include="TrainModel.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="liblinear\blasp.h" />
     <ClInclude Include="liblinear\linear.h" />
     <ClInclude Include="liblinear\tron.h" />
+    <ClInclude Include="Observe.h" />
     <ClInclude Include="RandomForest.h" />
     <ClInclude Include="Tree.h" />
   </ItemGroup>

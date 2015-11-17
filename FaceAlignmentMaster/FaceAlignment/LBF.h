@@ -30,6 +30,7 @@
 #include <fstream>
 #include <numeric>   
 #include <utility> 
+#include "Observe.h"
 
 struct Params{
     

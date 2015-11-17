@@ -291,12 +291,16 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 						 const vector<Mat_<double> >& ground_truth_shapes,
 						 const vector<BoundingBox> & bounding_boxs){
 	
+	//Observe
+	Observe::Logs global_logs(images.size()*global_params.initial_num,global_params.max_numstage,global_params.landmark_num);
+
 	// data augmentation and multiple initialization
 	vector<Mat_<uchar> > augmented_images;
 	vector<BoundingBox> augmented_bounding_boxs;
 	vector<Mat_<double> > augmented_ground_truth_shapes;
 	vector<Mat_<double> > current_shapes;
-	
+
+
 	RNG random_generator(getTickCount());
 	for(int i = 0;i < images.size();i++){
 		for(int j = 0;j < global_params.initial_num;j++){
@@ -315,6 +319,19 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 			Mat_<double> temp = ProjectShape(ground_truth_shapes[index], bounding_boxs[index]);
 			temp = ReProjectShape(temp, bounding_boxs[i]);
 			current_shapes.push_back(temp);
+
+			//Observe
+			string id=Observe::Mkdir("Observe\\",i*global_params.initial_num+j);
+			//Observe::Mkdir("Observe\\",i*global_params.initial_num+j,global_params.max_numstage);
+			Mat_<uchar> img=Observe::DrawImg(images[i],ground_truth_shapes[i],Scalar(0,0,0));
+			img=Observe::DrawImgOnSelf(img,bounding_boxs[i],Scalar(255,255,255));
+			Observe::SaveImg("Observe\\"+id+"\\truth_shape.jpg",img);
+			img=Observe::DrawImgOnSelf(img,temp,Scalar(255,255,255));
+			Observe::SaveImg("Observe\\"+id+"\\current_shapes.jpg",img);
+			Observe::TextLog("Observe\\"+id+"\\truth_shape.txt",ground_truth_shapes[i]);
+			Observe::TextLog("Observe\\"+id+"\\current_shapes.txt",temp);
+			Observe::TextLog("Observe\\"+id+"\\bounding_boxs.txt",bounding_boxs[i]);
+			global_logs.AddLogs(i*global_params.initial_num+j,0,temp,ground_truth_shapes[i]);
 		}
 	}
 	
@@ -359,7 +376,21 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 
 		cout << "the "<<stage<<" has completed, cost "<<(t4-t0)/((double)cvGetTickFrequency()*1000*1000) <<" s"<<endl;
 		cout << "Remaining time is about "<< (t4-t0)/((double)cvGetTickFrequency()*1000*1000*(stage+1))*(global_params.max_numstage-stage-1)<< "s"<<endl<<endl;
+
+		//Observe
+		for (int i=0;i<augmented_images.size();i++)
+		{
+			global_logs.AddLogs(i,stage,current_shapes[i],ground_truth_shapes[i]);
+			Mat_<uchar> img=Observe::DrawImg(augmented_images[i],ground_truth_shapes[i],Scalar(0,0,0));
+			img=Observe::DrawImgOnSelf(img,bounding_boxs[i],Scalar(255,255,255));
+			img=Observe::DrawImgOnSelf(img,current_shapes[i],Scalar(255,255,255));
+			string id=Observe::intTostring(i);
+			string stageString=Observe::intTostring(stage);
+			//Observe::SaveImg("Observe\\"+id+"\\stage"+stageString+"\\afterStage"+stageString+".jpg",img);
+			Observe::SaveImg("Observe\\"+id+"\\afterStage"+stageString+".jpg",img);
+		}
 	}
+	global_logs.SaveLogs();
 }
 void LBFRegressor::ReleaseFeatureSpace(struct feature_node ** binfeatures,
 						 int num_train_sample){

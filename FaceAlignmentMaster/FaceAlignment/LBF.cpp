@@ -14,7 +14,6 @@ using namespace cv;
 // parameters
 Params global_params;
 
-
 string modelPath ="./models/";
 string dataPath = "./Datasets/";
 string cascadeName = "haarcascade_frontalface_alt.xml";
@@ -26,8 +25,8 @@ int main( int argc,  char** argv ){
 	argc=3;
 	argv=new char*[3];
 	argv[0]="LBF.exe";
-	argv[1]="Demo";
-	argv[2]="jpg/PeopleGroup.jpg";
+	argv[1]="TrainModel";
+	//argv[2]="jpg/PeopleGroup.jpg";
 //    double rs[3] = {0.4,0.15,0.08};
 //    for (int i=0;i<3;i++){
 //        Mat image = imread("/Users/lequan/workspace/LBF/Datasets/afw/437595409_1.jpg");
@@ -61,9 +60,10 @@ int main( int argc,  char** argv ){
 	else if(strcmp(argv[1],"TrainModel")==0){
 		vector<string> trainDataName;
 	 // you need to modify this section according to your training dataset
-		trainDataName.push_back("afw");
-		trainDataName.push_back("helen");
-		trainDataName.push_back("lfpw");
+		//trainDataName.push_back("afw");
+		//trainDataName.push_back("helen");
+		//trainDataName.push_back("lfpw");
+		trainDataName.push_back("ibug");
 		TrainModel(trainDataName);
 	}
 	else if (strcmp(argv[1], "TestModel")==0){

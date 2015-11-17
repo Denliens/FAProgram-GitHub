@@ -57,6 +57,9 @@
     <ClCompile Include="TrainModel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Observe.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LBF.h">
@@ -81,6 +84,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="liblinear\blasp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Observe.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
