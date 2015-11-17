@@ -328,9 +328,9 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 			Observe::SaveImg("Observe\\"+id+"\\truth_shape.jpg",img);
 			img=Observe::DrawImgOnSelf(img,temp,Scalar(255,255,255));
 			Observe::SaveImg("Observe\\"+id+"\\current_shapes.jpg",img);
-			Observe::TextLog("Observe\\"+id+"\\truth_shape.txt",ground_truth_shapes[i]);
-			Observe::TextLog("Observe\\"+id+"\\current_shapes.txt",temp);
-			Observe::TextLog("Observe\\"+id+"\\bounding_boxs.txt",bounding_boxs[i]);
+			Observe::PtsLog("Observe\\"+id+"\\truth_shape.pts",ground_truth_shapes[i]);
+			Observe::PtsLog("Observe\\"+id+"\\current_shapes.pts",temp);
+			Observe::BoxLog("Observe\\"+id+"\\bounding_boxs.box",bounding_boxs[i]);
 			global_logs.AddLogs(i*global_params.initial_num+j,0,temp,ground_truth_shapes[i]);
 		}
 	}
@@ -380,9 +380,9 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 		//Observe
 		for (int i=0;i<augmented_images.size();i++)
 		{
-			global_logs.AddLogs(i,stage,current_shapes[i],ground_truth_shapes[i]);
-			Mat_<uchar> img=Observe::DrawImg(augmented_images[i],ground_truth_shapes[i],Scalar(0,0,0));
-			img=Observe::DrawImgOnSelf(img,bounding_boxs[i],Scalar(255,255,255));
+			global_logs.AddLogs(i,stage,current_shapes[i],augmented_ground_truth_shapes[i]);
+			Mat_<uchar> img=Observe::DrawImg(augmented_images[i],augmented_ground_truth_shapes[i],Scalar(0,0,0));
+			img=Observe::DrawImgOnSelf(img,augmented_bounding_boxs[i],Scalar(255,255,255));
 			img=Observe::DrawImgOnSelf(img,current_shapes[i],Scalar(255,255,255));
 			string id=Observe::intTostring(i);
 			string stageString=Observe::intTostring(stage);

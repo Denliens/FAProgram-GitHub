@@ -45,19 +45,23 @@ namespace Observe
 		outLog.close();
 	}
 
-	void TextLog(string path,const Mat_<double> &shapes)
+	void PtsLog(string path,const Mat_<double> &shapes)
 	{
 		ofstream outLog;
 		outLog.open(path,ios::app);
-		outLog<<shapes<<"\t\n";
+		outLog<<"version: 1\t\nn_points:  68\t\n{\t\n";
+		for( int i = 0; i < shapes.rows; ++i){ 
+			outLog<<shapes(i,0)<<" "<<shapes(i,1)<<"\t\n";
+		 }
+		outLog<<"}";
 		outLog.close();
 	}
 
-	void TextLog(string path,const BoundingBox &box)
+	void BoxLog(string path,const BoundingBox &box)
 	{
 		ofstream outLog;
 		outLog.open(path,ios::app);
-		outLog<<box.start_x<<" | "<<box.start_y<<" | "<<box.height<<" | "<<box.width<<" | "<<box.centroid_x<<" | "<<box.centroid_y<<"\t\n";
+		outLog<<box.start_x<<" "<<box.start_y<<" "<<box.height<<" "<<box.width<<" "<<box.centroid_x<<" "<<box.centroid_y<<"\t\n";
 		outLog.close();
 	}
 
@@ -195,10 +199,10 @@ namespace Observe
 	{
 		Total=0;
 		Avg=0;
-		Max=65536;
-		Min=-65536;
-		MaxChange=65536;
-		MinChange=-65536;
+		Max=-65536;
+		Min=65536;
+		MaxChange=-65536;
+		MinChange=65536;
 		S=0;
 		MaxId=-1;
 		MinId=-1;

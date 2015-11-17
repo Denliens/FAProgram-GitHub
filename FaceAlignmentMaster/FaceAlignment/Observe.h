@@ -40,8 +40,8 @@ namespace Observe
 	string Mkdir(string path,int count);
 	string Mkdir(string path,int count,int stage);
 	void TextLog(string path,string content);
-	void TextLog(string path,const Mat_<double> &shapes);
-	void TextLog(string path,const BoundingBox &box);
+	void PtsLog(string path,const Mat_<double> &shapes);
+	void BoxLog(string path,const BoundingBox &box);
 	void SaveImg(string path,const Mat_<uchar> &img);
 	Mat_<uchar> DrawImg(const Mat_<uchar> &img,const Mat_<double> &shapes,Scalar color);
 	Mat_<uchar> DrawImg(const Mat_<uchar> &img,const BoundingBox &box,Scalar color);

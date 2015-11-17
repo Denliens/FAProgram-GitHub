@@ -1,57 +1,9 @@
-﻿生成启动时间为 2015/11/17 12:35:55。
+﻿生成启动时间为 2015/11/17 17:30:18。
      1>项目“F:\WorkPlace。\0.Project\0016.2015.09.人脸识别项目\FAProgram-GitHub\FaceAlignmentMaster\FaceAlignment\FaceAlignment.vcxproj”在节点 2 上(Build 个目标)。
        项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
      1>ClCompile:
-         D:\Files\Visual Studio 2012\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc110.pdb" /Gd /TP /errorReport:prompt Facedetect.cpp LBF.cpp LBFRegressor.cpp Observe.cpp RandomForest.cpp TestModel.cpp TrainModel.cpp Tree.cpp Utils.cpp
-         Facedetect.cpp
-     1>f:\workplace。\0.project\0016.2015.09.人脸识别项目\faprogram-github\facealignmentmaster\facealignment\Tree.h(78): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-     1>Facedetect.cpp(197): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-     1>Facedetect.cpp(198): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-         LBF.cpp
-     1>f:\workplace。\0.project\0016.2015.09.人脸识别项目\faprogram-github\facealignmentmaster\facealignment\Tree.h(78): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-     1>LBF.cpp(106): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-         LBFRegressor.cpp
-     1>f:\workplace。\0.project\0016.2015.09.人脸识别项目\faprogram-github\facealignmentmaster\facealignment\Tree.h(78): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(65): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(86): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(87): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(109): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(138): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(139): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(151): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(152): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(162): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(295): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(342): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(431): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-     1>LBFRegressor.cpp(469): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+         D:\Files\Visual Studio 2012\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc110.pdb" /Gd /TP /errorReport:prompt Observe.cpp
          Observe.cpp
-         RandomForest.cpp
-     1>f:\workplace。\0.project\0016.2015.09.人脸识别项目\faprogram-github\facealignmentmaster\facealignment\Tree.h(78): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-     1>RandomForest.cpp(28): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>RandomForest.cpp(34): warning C4244: “=”: 从“const double”转换到“int”，可能丢失数据
-         TestModel.cpp
-     1>f:\workplace。\0.project\0016.2015.09.人脸识别项目\faprogram-github\facealignmentmaster\facealignment\Tree.h(78): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-         TrainModel.cpp
-     1>f:\workplace。\0.project\0016.2015.09.人脸识别项目\faprogram-github\facealignmentmaster\facealignment\Tree.h(78): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-         Tree.cpp
-     1>f:\workplace。\0.project\0016.2015.09.人脸识别项目\faprogram-github\facealignmentmaster\facealignment\Tree.h(78): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(174): warning C4018: “<”: 有符号/无符号不匹配
-     1>Tree.cpp(207): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(208): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(209): warning C4244: “=”: 从“const double”转换到“int”，可能丢失数据
-     1>Tree.cpp(210): warning C4244: “=”: 从“const double”转换到“int”，可能丢失数据
-     1>Tree.cpp(219): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(220): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(221): warning C4244: “=”: 从“const double”转换到“int”，可能丢失数据
-     1>Tree.cpp(222): warning C4244: “=”: 从“const double”转换到“int”，可能丢失数据
-     1>Tree.cpp(276): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(277): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(278): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(279): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-     1>Tree.cpp(285): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-         Utils.cpp
-     1>f:\workplace。\0.project\0016.2015.09.人脸识别项目\faprogram-github\facealignmentmaster\facealignment\Tree.h(78): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
        Link:
          D:\Files\Visual Studio 2012\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\WorkPlace。\0.Project\0016.2015.09.人脸识别项目\FAProgram-GitHub\FaceAlignmentMaster\x64\Release\FaceAlignment.exe" /INCREMENTAL:NO /NOLOGO opencv_calib3d2411.lib opencv_contrib2411.lib opencv_core2411.lib opencv_features2d2411.lib opencv_flann2411.lib opencv_gpu2411.lib opencv_highgui2411.lib opencv_imgproc2411.lib opencv_legacy2411.lib opencv_ml2411.lib opencv_nonfree2411.lib opencv_objdetect2411.lib opencv_ocl2411.lib opencv_photo2411.lib opencv_stitching2411.lib opencv_superres2411.lib opencv_ts2411.lib opencv_video2411.lib opencv_videostab2411.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\WorkPlace。\0.Project\0016.2015.09.人脸识别项目\FAProgram-GitHub\FaceAlignmentMaster\x64\Release\FaceAlignment.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\WorkPlace。\0.Project\0016.2015.09.人脸识别项目\FAProgram-GitHub\FaceAlignmentMaster\x64\Release\FaceAlignment.lib" /MACHINE:X64 x64\Release\Facedetect.obj
          x64\Release\LBF.obj
@@ -75,4 +27,4 @@
 
 生成成功。
 
-已用时间 00:00:15.82
+已用时间 00:00:06.30
