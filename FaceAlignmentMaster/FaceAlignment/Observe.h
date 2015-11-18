@@ -15,6 +15,9 @@ using namespace cv;
 class BoundingBox;
 namespace Observe
 {
+	extern int ObserveFlag;
+	extern string ObserveId;
+
 	class Statistics
 	{
 	public:
@@ -28,7 +31,7 @@ namespace Observe
 	public:
 		Logs(int samples,int stages,int landmarks);
 		void AddLogs(int id,int stage,const Mat_<double> &currentShapes,const Mat_<double> &truthShapes);
-		void SaveLogs();
+		void SaveLogs(string path);
 	private:
 		double **datas;
 		int totalSample;
@@ -47,6 +50,8 @@ namespace Observe
 	Mat_<uchar> DrawImg(const Mat_<uchar> &img,const BoundingBox &box,Scalar color);
 	Mat_<uchar> DrawImgOnSelf(Mat_<uchar> &img,const Mat_<double> &shapes,Scalar color);
 	Mat_<uchar> DrawImgOnSelf(Mat_<uchar> &img,const BoundingBox &box,Scalar color);
+
+	BoundingBox LoadBox(string path);
 }
 
 #endif /* defined(__myopencv__Observe__) */

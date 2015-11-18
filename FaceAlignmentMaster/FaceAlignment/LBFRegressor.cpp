@@ -323,6 +323,7 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 			//Observe
 			string id=Observe::Mkdir("Observe\\",i*global_params.initial_num+j);
 			//Observe::Mkdir("Observe\\",i*global_params.initial_num+j,global_params.max_numstage);
+			Observe::SaveImg("Observe\\"+id+"\\init.jpg",images[i]);
 			Mat_<uchar> img=Observe::DrawImg(images[i],ground_truth_shapes[i],Scalar(0,0,0));
 			img=Observe::DrawImgOnSelf(img,bounding_boxs[i],Scalar(255,255,255));
 			Observe::SaveImg("Observe\\"+id+"\\truth_shape.jpg",img);
@@ -390,7 +391,7 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 			Observe::SaveImg("Observe\\"+id+"\\afterStage"+stageString+".jpg",img);
 		}
 	}
-	global_logs.SaveLogs();
+	global_logs.SaveLogs("Observe\\");
 }
 void LBFRegressor::ReleaseFeatureSpace(struct feature_node ** binfeatures,
 						 int num_train_sample){
@@ -446,11 +447,20 @@ Mat_<double>  LBFRegressor::Predict(const cv::Mat_<uchar>& image,
 	vector<Mat_<double> > current_shapes;
 	vector<BoundingBox>  bounding_boxs;
 
-
 	images.push_back(image);
 	bounding_boxs.push_back(bounding_box);
-	current_shapes.push_back(ReProjectShape(mean_shape_, bounding_box));
-   
+	//Observe
+	if(Observe::ObserveFlag>0)
+	{
+		string ptsPath=Observe::ObserveId+"current_shapes.pts";
+		Mat_<double> meanShape = LoadGroundTruthShape(ptsPath);
+		current_shapes.push_back(meanShape);
+	}
+	else
+	{
+		current_shapes.push_back(ReProjectShape(mean_shape_, bounding_box));
+	}
+	
 //    Mat img = imread("/Users/lequan/workspace/LBF/Datasets/lfpw/testset/image_0078.png");
 //    // draw result :: red
 //    for(int j = 0;j < global_params.landmark_num;j++){

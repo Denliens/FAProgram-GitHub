@@ -11,6 +11,9 @@ using namespace cv;
 
 namespace Observe
 {
+	int ObserveFlag=0;
+	string ObserveId;
+
 	string intTostring(int o)
 	{
 		char tempChar[10];
@@ -91,6 +94,17 @@ namespace Observe
 		return img;
 	}
 
+	BoundingBox LoadBox(string path)
+	{
+		BoundingBox box;
+		ifstream inLog;
+		inLog.open(path);
+		inLog>>box.start_x>>box.start_y>>box.height>>box.width
+			>>box.centroid_x>>box.centroid_y;
+		inLog.close();
+		return box;
+	}
+
 	void SaveImg(string path,const Mat_<uchar> &img)
 	{
 		imwrite(path,img);
@@ -117,10 +131,10 @@ namespace Observe
 		datas[id][stage]=CalculateError(truthShapes,currentShapes);
 	}
 
-	void Logs::SaveLogs()
+	void Logs::SaveLogs(string path)
 	{
 		ofstream outLog;
-		outLog.open("Observe\\statistics.txt",ios::app);
+		outLog.open(path+"statistics.txt",ios::app);
 		outLog<<"Bug Log:\t\n";
 		Statistics *statistics=new Statistics [totalStage];
 		for (int stage=0;stage<totalStage;stage++)
@@ -131,12 +145,12 @@ namespace Observe
 				if(datas[id][stage]>statistics[stage].Max)
 				{
 					statistics[stage].Max=datas[id][stage];
-					statistics[stage].MaxId=stage;
+					statistics[stage].MaxId=id;
 				}
 				if(datas[id][stage]<statistics[stage].Min)
 				{
 					statistics[stage].Min=datas[id][stage];
-					statistics[stage].MinId=stage;
+					statistics[stage].MinId=id;
 				}
 				if(stage>0)
 				{
@@ -177,13 +191,13 @@ namespace Observe
 			outLog<<"Avg "<<statistics[stage].Avg<<"\t\n";
 			outLog<<"Max "<<statistics[stage].Max<<"(in "<<statistics[stage].MaxId<<")"<<"\t\n";
 			outLog<<"Min "<<statistics[stage].Min<<"(in "<<statistics[stage].MinId<<")"<<"\t\n";
-			outLog<<"MaxChange "<<statistics[stage].MaxChange<<"(in "<<statistics[stage].MaxChangeId<<" stage "<<statistics[stage].MaxChangeStage<<")"<<"\t\n";
-			outLog<<"MinChange "<<statistics[stage].MinChange<<"(in "<<statistics[stage].MinChangeId<<" stage "<<statistics[stage].MinChangeStage<<")"<<"\t\n";
+			outLog<<"MinChange "<<statistics[stage].MaxChange<<"(in "<<statistics[stage].MaxChangeId<<" stage "<<statistics[stage].MaxChangeStage<<")"<<"\t\n";
+			outLog<<"MaxChange "<<statistics[stage].MinChange<<"(in "<<statistics[stage].MinChangeId<<" stage "<<statistics[stage].MinChangeStage<<")"<<"\t\n";
 			outLog<<"Variance ·½²î "<<statistics[stage].S<<"\t\n\t\n";
 		}
 		outLog.close();
 
-		outLog.open("Observe\\detail.txt",ios::app);
+		outLog.open(path+"detail.txt",ios::app);
 		for (int i=0;i<totalSample;i++)
 		{
 			for (int j=0;j<totalStage;j++)

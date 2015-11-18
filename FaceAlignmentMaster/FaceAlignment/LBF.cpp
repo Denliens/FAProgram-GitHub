@@ -25,8 +25,8 @@ int main( int argc,  char** argv ){
 	argc=3;
 	argv=new char*[3];
 	argv[0]="LBF.exe";
-	argv[1]="TrainModel";
-	//argv[2]="jpg/PeopleGroup.jpg";
+	argv[1]="Demo";
+	argv[2]="jpg/PeopleGroup.jpg";
 //    double rs[3] = {0.4,0.15,0.08};
 //    for (int i=0;i<3;i++){
 //        Mat image = imread("/Users/lequan/workspace/LBF/Datasets/afw/437595409_1.jpg");
@@ -75,6 +75,17 @@ int main( int argc,  char** argv ){
 		
 	}
 	else if (strcmp(argv[1], "Demo")==0){
+		//Observe
+		if(Observe::ObserveFlag>0)
+		{
+			for(int i=0;i<Observe::ObserveFlag;i++)
+			{
+				string id=Observe::intTostring(i);
+				Observe::ObserveId="Observe\\"+id+"\\";
+				FaceDetectionAndAlignment(("Observe\\"+id+"\\init.jpg").c_str());
+			}
+			return 0;
+		}
 		if (argc == 2){
 			return FaceDetectionAndAlignment("");
 		}
