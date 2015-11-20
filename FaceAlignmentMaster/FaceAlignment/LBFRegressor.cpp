@@ -292,7 +292,7 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 						 const vector<BoundingBox> & bounding_boxs){
 	
 	//Observe
-	Observe::Logs global_logs(images.size()*global_params.initial_num,global_params.max_numstage,global_params.landmark_num);
+	Observe::Logs global_logs(images.size()*global_params.initial_num,global_params.max_numstage+1,global_params.landmark_num);
 
 	// data augmentation and multiple initialization
 	vector<Mat_<uchar> > augmented_images;
@@ -381,7 +381,7 @@ void LBFRegressor::Train(const vector<Mat_<uchar> >& images,
 		//Observe
 		for (int i=0;i<augmented_images.size();i++)
 		{
-			global_logs.AddLogs(i,stage,current_shapes[i],augmented_ground_truth_shapes[i]);
+			global_logs.AddLogs(i,stage+1,current_shapes[i],augmented_ground_truth_shapes[i]);
 			Mat_<uchar> img=Observe::DrawImg(augmented_images[i],augmented_ground_truth_shapes[i],Scalar(0,0,0));
 			img=Observe::DrawImgOnSelf(img,augmented_bounding_boxs[i],Scalar(255,255,255));
 			img=Observe::DrawImgOnSelf(img,current_shapes[i],Scalar(255,255,255));

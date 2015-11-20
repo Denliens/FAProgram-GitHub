@@ -187,7 +187,10 @@ namespace Observe
 
 		for (int stage=0;stage<totalStage;stage++)
 		{
-			outLog<<"\t\nStage "<<stage<<"\t\n";
+			if (stage==0)
+				outLog<<"\t\nInit "<<"\t\n";
+			else
+				outLog<<"\t\nAfter Stage "<<(stage-1)<<"\t\n";
 			outLog<<"Avg "<<statistics[stage].Avg<<"\t\n";
 			outLog<<"Max "<<statistics[stage].Max<<"(in "<<statistics[stage].MaxId<<")"<<"\t\n";
 			outLog<<"Min "<<statistics[stage].Min<<"(in "<<statistics[stage].MinId<<")"<<"\t\n";
